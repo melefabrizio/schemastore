@@ -698,7 +698,14 @@
           "role": {
             "description": "The Kubernetes role of entities that should be discovered. One of endpoints, service, pod, node, or ingress.",
             "type": "string",
-            "enum": ["endpoints", "service", "pod", "node", "ingress"]
+            "enum": [
+              "endpointslice",
+              "endpoints",
+              "service",
+              "pod",
+              "node",
+              "ingress"
+            ]
           },
           "kubeconfig_file": {
             "$ref": "#/definitions/filepath"
@@ -1208,6 +1215,11 @@
           "scrape_timeout": {
             "$ref": "#/definitions/duration",
             "description": "Per-scrape timeout when scraping this job. Defaults to `global.scrape_timeout`."
+          },
+          "scrape_native_histograms": {
+            "description": "Controls whether to scrape a target's native histograms.",
+            "type": ["boolean", "null"],
+            "default": false
           },
           "fallback_scrape_protocol": {
             "description": "Fallback protocol to use if a scrape returns blank, unparsable, or otherwise invalid Content-Type.",
